@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    /*麻了，全网最麻烦解法
+     哪来的那么多奇葩算例啊
+     本来想新建一个数组，每加一个就push一个，然后看数组长度大于1，但是这样超时了
+     有一个贼长的算例
+     于是把判断条件改了 sum % k === 0 && j > i
+     只要当前循环的j大于i就能保证不是一个数
+     */
+    /**
+     * @param {number[]} nums
+     * @param {number} k
+     * @return {boolean}
+     */
+    var checkSubarraySum = function (nums, k) {
+        let n = nums.length
+        if (nums.length < 2) return false
+        for (let i = 0; i < n; i++) {
+            let sum = 0
+            for (let j = i; j < n; j++) {
+                sum += nums[j]
+                if (sum % k === 0 && j > i) {
+                    return true
+                }
+            }
+        }
+        return false
+    };
+</script>
+
+</html>
