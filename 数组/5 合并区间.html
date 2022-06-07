@@ -25,6 +25,29 @@
      * 但是要考虑到 [1,6],[2,4]的情况，即合并区间后的区间右侧的判断
      * 
     */
+
+
+    /**
+     * @param {number[][]} intervals
+     * @return {number[][]}
+     */
+
+    var merge = function (intervals) {
+        intervals.sort((a, b) => a[0] - b[0])
+        let res = []
+        let cur = intervals[0]
+        for (let interval of intervals) {
+            if (cur[1] >= interval[0]) {
+                // [[1,4],[2,3]]的例子
+                cur[1] = Math.max(cur[1], interval[1])
+            } else {
+                res.push(cur)
+                cur = interval
+            }
+        }
+        res.push(cur)
+        return res
+    }
 </script>
 
 </html>
