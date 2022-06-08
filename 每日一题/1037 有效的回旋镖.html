@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    /**
+     * 判断三点是否在同一条线上，通过斜率判断
+     * 但是要考虑到垂直的情况，所以可以把除法变乘法，保证始终有效
+    */
+    /**
+ * @param {number[][]} points
+ * @return {boolean}
+ */
+    var isBoomerang = function (points) {
+        let p1 = points[0], p2 = points[1], p3 = points[2]
+        let y1 = (p1[1] - p2[1]), x1 = (p1[0] - p2[0])
+        let y2 = (p1[1] - p3[1]), x2 = (p1[0] - p3[0])
+        return x1 * y2 !== x2 * y1;
+    };
+</script>
+
+</html>
