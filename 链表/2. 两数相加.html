@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    // Definition for singly-linked list.
+    function ListNode(val, next) {
+        this.val = (val === undefined) ? 0 : val
+        this.next = (next === undefined) ? null : next
+    }
+    /**
+     * 链表上要维护一个工作节点和一个进位t
+    */
+    var addTwoNumbers = function (l1, l2) {
+        // 维护进制
+        let t = 0
+        let dummy = new ListNode(-1)
+        while (l1 !== null || l2 !== null || t !== 0) {
+            if (l1 !== null) {
+                t += l1.val
+                l1 = l1.next
+            }
+            if (l2 !== null) {
+                t += l2.val
+                l2 = l2.next
+            }
+            p.next = new ListNode(t % 10)
+            t = Math.floor(t / 10)
+            p = p.next
+        }
+        return dummy.next
+    }
+</script>
+
+</html>
