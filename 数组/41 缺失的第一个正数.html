@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    /**
+     * @params {number[]} nums
+     * @return {number}
+    */
+    var firstMissingPositive = function (nums) {
+        const set = new Set()
+        for (let num of nums) {
+            set.add(num)
+        }
+        for (let i = 1; i < nums.length + 1; i++) {
+            if (!set.has(i)) {
+                return i
+            }
+        }
+        return nums.length + 1
+    }
+
+    /*
+    // 超时案例
+     var firstMissingPositive = function(nums) {
+        for(let i = 1; i < nums.length + 1; i++){
+            if(!nums.includes(i)){
+                return i
+            }
+        }
+        return nums.length + 1
+    };
+    */
+
+
+
+    /**
+     * 上述解法并非最优解，题目中本质是寻找数组中是否存在某一元素，用数组的
+     * indexOf或者includes方法有的算例会超时
+     * 
+     * 用Set来存储做查找速度会更快
+     * 不会超时
+     * Set的方法
+     * 增 add(value)
+     * 删 delete()
+     * 查 has()
+     * 改 
+     * 属性 size
+     * Map
+     * 增 set(key,value)
+     * 删 delete(key)
+     * 查 get(key)
+     * 改 set(k,v)
+    */
+</script>
+
+</html>
