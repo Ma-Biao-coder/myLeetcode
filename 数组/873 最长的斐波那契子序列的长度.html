@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    /**
+     * @param {number[]} arr
+     * @return {number}
+    */
+    var lenLongestFibSubSeq = function (arr) {
+        const set = new Set()
+        for (let num of arr) {
+            set.add(num)
+        }
+        let max = 2
+        for (let i = 0; i < arr.length; i++) {
+            for (let j = i + 1; j < arr.length; j++) {
+                let dp_i_2 = arr[i], dp_i_1 = arr[j]
+                let dp_i = dp_i_2 + dp_i_1
+                let len = 2
+                while (set.has(dp_i)) {
+                    len++
+                    dp_i_2 = dp_i_1
+                    dp_i_1 = dp_i
+                    dp_i = dp_i_2 + dp_i_1
+                }
+            }
+        }
+        return max < 3 ? 0 : max
+    }
+</script>
