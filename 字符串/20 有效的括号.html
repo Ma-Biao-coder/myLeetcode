@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    /**
+     * @params {string} s
+     * @return {boolean}
+    */
+    /****************method1*****stack*************/
+    var validParenthese = function (s) {
+        const stack = []
+        for (let i = 0; i < s.length; i++) {
+            let char = s[i]
+            if (char === '{') {
+                stack.push('}')
+            }
+            else if (char === '[') {
+                stack.push(']')
+            }
+            else if (char === '(') {
+                stack.push(')')
+            } else {
+                if (stack.length === 0) {
+                    return false
+                }
+                if (char !== stack.pop()) {
+                    return false
+                }
+            }
+        }
+        return stack.length === 0
+    }
+
+    /*****************************API********************/
+
+    var isValid = function (s) {
+        while (s.includes('()') || s.includes('[]') || s.includes('{}')) {
+            s = s.replace('()', '')
+            s = s.replace('[]', '')
+            s = s.replace('{}', '')
+        }
+        return s === ''
+    }
+</script>
