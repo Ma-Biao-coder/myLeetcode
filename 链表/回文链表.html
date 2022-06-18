@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    /**
+ * @param {ListNode} head
+ * @return {boolean}
+ */
+    /*************这样写变动了原链表，所以怎么比较都是false******************/
+    /*反转之后 head是revers的末尾 1 2 2 1 head就是 1*/
+    var isPalindrome = function (head) {
+        let revers = reverse(head)
+        return revers === head
+    };
+
+    const reverse = (head) => {
+        let prev = null
+        let cur = head
+        while (cur !== null) {
+            let temp = cur.next
+            cur.next = prev
+            prev = cur
+            cur = temp
+        }
+        return prev
+    }
+
+    /************借助额外空间****用栈实现***************/
+    /**
+ * @param {ListNode} head
+ * @return {boolean}
+ */
+    var isPalindrom = function (head) {
+        const stack = []
+        let p = head
+        while (p !== null) {
+            stack.push(p.val)
+            p = p.next
+        }
+        while (head !== null) {
+            if (head.val !== stack.pop()) {
+                return false
+            }
+            head = head.next
+        }
+        return true
+    }
+</script>
