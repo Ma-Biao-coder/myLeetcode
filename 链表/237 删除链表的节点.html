@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    function ListNode(val, next) {
+        this.val = val === undefined ? 0 : val
+        this.next = next === undefined ? null : next
+    }
+
+    var deleteNode = function (node) {
+        node.val = node.next.val
+        node.next = node.next.next
+    }
+
+
+
+
+
+    /**
+     * Definition for singly-linked list.
+     * function ListNode(val) {
+     *     this.val = val;
+     *     this.next = null;
+     * }
+     */
+    /**
+     * @param {ListNode} node
+     * @return {void} Do not return anything, modify node in-place instead.
+     */
+    var deleteNode = function (node) {
+        /**
+            下一个节点好可怜
+         */
+        node.val = node.next.val
+        node.next = node.next.next
+    };
+</script>
+
+</html>
