@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    /**
+     * @param {number[]} nums
+     * @return {number}
+     */
+    var majorityElement = function (nums) {
+        let o = {}
+        /**
+            如果没有该元素，就记录1，如果有则+1
+         */
+        for (let num of nums) {
+            if (o[num] === undefined) {
+                o[num] = 1
+            } else {
+                o[num]++
+            }
+
+        }
+        let n = nums.length
+        for (let k in o) {
+            if (o[k] > Math.floor(n / 2)) return k
+        }
+    };
+
+
+    /**
+     * 方法二  可以直接排序，取中间的数
+    */
+
+
+    /**
+     * 摩尔投票法
+    */
+
+    var majorityElement2 = function (nums) {
+        // 先拉第一个当结果，其票数为1
+        let res = nums[0], cnt = 1
+        for (let i = 1; i < nums.length; i++) {
+            // 如果后面还是她，那就加一票
+            if (res === nums[i]) {
+                cnt++
+            } else {
+                // 不是的话就减一票
+                cnt--
+                if (cnt === 0) {
+                    // 减到0就换人，其实不在乎出现的顺序，关键在于能不能扛到最后
+                    res = nums[i + 1]
+                }
+            }
+        }
+        return res
+    };
+</script>
+
+</html>
