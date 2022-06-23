@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+<script>
+    /**
+     * @param {string []} words
+     * @param {string} pattern
+     * @return {string []}
+    */
+
+
+    /**
+     * 函数命名可以直接叫题目名字
+     * 数组方法 filter
+    */
+    var findAndReplacePattern = function (words, pattern) {
+        return words.filter(item => mapping(item) === mapping(pattern))
+    }
+
+    // 记录每一个出现的字符，然后记录模式
+    const mapping = (word) => {
+        let mode = ''
+        let o = {}
+        let i = 1
+        for (let char of word) {
+            // 这里if这样写更专业一点
+            if (!o[char]) {
+                o[char] = i++ + ' '
+            }
+            mode += o[char]
+        }
+        return mode
+    }
+</script>
+
+</html>
