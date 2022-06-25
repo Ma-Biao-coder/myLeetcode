@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    function TreeNode(val, right, left) {
+        this.val = val === undefined ? 0 : val
+        this.right = right === undefined ? null : right
+        this.left = left === undefined ? null : left
+    }
+
+    var levelOrderFromBottom = function (root) {
+        // res用于存放最终结果，
+        const res = []
+        const queue = []
+        if (root === null) return res
+        queue.push(root)
+        /**
+         * 这里也可以写为
+         * while(queue.length)
+         * 但是觉得这样的写法让程序可读性降低
+        */
+        while (queue.length !== 0) {
+            // list用于记录每一层的值
+            const list = []
+            let len = queue.length
+            // 注意for循环中i的小于条件  queue表示当前层的节点
+            for (let i = 0; i < len; i++) {
+                let cur = queue.shift()
+                list.push(cur.val)
+                if (cur.left) {
+                    queue.push(cur.left)
+                }
+                if (cur.right) {
+                    queue.push(cur.right)
+                }
+            }
+            res.push(list)
+        }
+        return res.reverse()
+    }
+</script>
