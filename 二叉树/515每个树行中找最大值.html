@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+
+<script>
+    /**
+     * js中 Number.MIN_VALUE 是一个接近0的数，而不是负数
+     * 最小的负数时  -Number.MAX_VALUE
+    */
+
+    /**
+     * 定义TreeNode
+    */
+    function TreeNode(val, left, right) {
+        this.val = val === undefined ? 0 : val
+        this.left = left === undefined ? null : left
+        this.right = right === undefined ? null : right
+    }
+
+
+    var maxOfLine = function (root) {
+        if (!root) return []
+        const res = []
+        const queue = []
+        queue.push(root)
+        while (queue.length) {
+            let len = queue.length
+            let max = - Number.MAX_VALUE
+            for (let i = 0; i < len; i++) {
+                let cur = queue.shift()
+                max = max > cur.val ? max : cur.val
+                cur.left && queue.push(cur.left)
+                cur.right && queue.push(cur.right)
+            }
+            res.push(max)
+        }
+        return res
+    }
+</script>
