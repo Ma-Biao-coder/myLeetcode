@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    /**
+     * 核心思路，不要看整体，而是看局部，看每一列最多可以装多少水
+     * 对于位置i，其能装的水取决于往左看能看到的最大值和往右看能看到
+     * 的最大值中较小的那一个与他的差值
+    */
+    /**
+     * @param {number[]} height 
+     * @return number
+    */
+
+    var trap = function (height) {
+        let n = height.length
+        let res = 0
+        for (let i = 1; i < n; i++) {
+            let l_max = 0, r_max = 0
+            /**
+             * 往左边看
+            */
+            for (j = i; j < n; j++) {
+                r_max = Math.max(r_max, height[j])
+            }
+            /**
+             * 往右边看
+            */
+            for (j = i; j >= 0; j--) {
+                l_max = Math.max(l_max, height[j])
+            }
+            res += Math.min(l_max, r_max) - height[i]
+        }
+        return res
+    }
+</script>
