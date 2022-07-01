@@ -23,7 +23,8 @@
      * @param {number[]} height 
      * @return number
     */
-
+    /*******方法一  左看右看******/
+    /*************时间复杂度O(N)，空间复杂度O(N2)*********/
     var trap = function (height) {
         let n = height.length
         let res = 0
@@ -44,5 +45,31 @@
             res += Math.min(l_max, r_max) - height[i]
         }
         return res
+    }
+
+    /******方法二 备忘录优化*****/
+
+    var trip2 = function (height) {
+        let n = height.length
+        /*备忘录优化 用于记录左边和右边的结果*/
+        const l_max = new Array(n)
+        const r_max = new Array(n)
+        /*初始化*/
+        l_max[0] = height[0]
+        r_max[n - 1] = height[n - 1]
+        let res = 0
+        /**更新记录**/
+        for (let i = 1; i < n; i++) {
+            l_max[i] = Math.max(height[i], l_max[i - 1])
+        }
+
+        for (let i = n - 2; i >= 0; i--) {
+            r_max[i] = Math.max(height[i], r_max[i + 1])
+        }
+
+        /**记录结果**/
+        for (let i = 1; i < n; i++) {
+            res += Math.min(l_max, r_max) - height[i]
+        }
     }
 </script>
