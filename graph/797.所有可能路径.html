@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    /**
+     * @param {number[][]} graph
+     * @return {number[][]}
+    */
+
+    /**
+     * 要注意图的遍历和回溯的区别
+     * 图的进入选择和撤销选择在for循环外面
+     * 回溯(多叉树的遍历)的进入选择和撤销选择在for循环里面
+    */
+
+
+    /*老实说这道题还是不太明白*/
+    let res = []
+    var allPossiblePath = function (graph) {
+        res = []
+        const path = []
+        traverse(graph, 0, path)
+        return res
+    }
+
+    const traverse = (graph, s, path) => {
+        /*添加节点到路径*/
+        path.push(s)
+        let n = graph.length
+        if (s === n - 1) {
+            res.push([...path])
+        }
+
+        /**
+         * 递归每一个节点
+        */
+        for (let v of graph[s]) {
+            /*这里类似多叉树的遍历*/
+            traverse(graph, v, path)
+        }
+        path.pop()
+    }
+</script>
+
+</html>
