@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+
+<script>
+    /**
+     * 思路 基于findANodeinBinaryTree
+     * 如果从一个节点可以找到p和q两个节点则说明是lca
+    */
+    /**
+     * @param {TreeNode} root
+     * @param {TreeNode} p
+     * @param {TreeNode} q
+    */
+    /**
+  * Definition for a binary tree node.
+  * function TreeNode(val) {
+  *     this.val = val;
+  *     this.left = this.right = null;
+  * }
+  */
+    /**
+     * @param {TreeNode} root
+     * @param {TreeNode} p
+     * @param {TreeNode} q
+     * @return {TreeNode}
+     */
+    var lowestCommonAncestor = function (root, p, q) {
+        /**
+            思路
+            如果一个节点能够在其左右子树中分别找到p & q， 则该节点为LCA节点
+            注意本身也可以是LCA的情况
+         */
+        return find(root, p.val, q.val)
+    };
+
+    /**
+    @param {TreeNode} root
+    @param {Number} val1
+    @param {Number} val2
+    @return {TreeNode}
+     */
+    const find = (root, val1, val2) => {
+        if (!root) return null
+        //遇到目标值 直接return
+        if (root.val === val1 || root.val === val2) {
+            return root
+        }
+        let left = find(root.left, val1, val2)
+        let right = find(root.right, val1, val2)
+        if (left && right) {
+            return root
+        }
+        // p或者q是lca
+        return left === null ? right : left
+    }
+</script>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    function Node(val, left, right) {
+        this.val = val === undefined ? 0 : val
+        this.left = left === undefined ? null : left
+        this.right = right === undefined ? null : right
+    }
+    /**
+     * design a function to find one node in a binary tree
+     * @param {Node} root
+     * @param {Number} val 
+     * @return {Node}
+    */
+    var findOneNode = function (root, val) {
+        if (!root) return null
+        if (root.val === val) return root
+        let left = findOneNode(root.left, val)
+        if (left.val === val) {
+            return left
+        }
+
+        let right = findOneNode(root.right, val)
+        if (right.val === val) {
+            return right
+        }
+
+        return null
+    }
+</script>
