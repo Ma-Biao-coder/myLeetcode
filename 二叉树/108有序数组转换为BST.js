@@ -9,6 +9,10 @@ function ListNode(val, left, right) {
  * 二叉搜索树的中序遍历就是一个升序数组，所以root是mid
  */
 
+/**
+ * @param {number[]} nums
+ * @returns {TreeNode}
+ */
 var sortArrayToBST = function (nums) {
 	const build = (l, r) => {
 		if (l > r) return null
