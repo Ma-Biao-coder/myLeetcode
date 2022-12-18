@@ -4,6 +4,10 @@
  * 先在中间随便切一刀，然后把比这个数大的放右边，比这个小的放左边‘
  * 然后在对左边的做这个操作
  * 在对右边的做这个操作
+ * 平均时间复杂度O(nlogn)，在最坏的情况下会退化到O(n2)
+ * 假设输入数据本来就有序，且在选择pivot时每次都选第一个，就只用O(n)的时间把数组划分为1和n-1个数
+ * 空间复杂度O(1) 原地排序
+ * quick sort 是不稳定排序
  */
 var sortArray = function (nums) {
 	const quickSort = (nums, start, end) => {
@@ -38,6 +42,9 @@ var sortArray = function (nums) {
  * 归并排序先局部有序再整体有序
  * 归并排序会多花一个O(n)额外空间，有稳定性
  * mergesort不选pivot，先左右两边排序，然后进行归并
+ * 时间复杂度O(nlogn)  空间复杂度O(n)
+ * merge sort 稳定排序
+ * (先局部有序，再整体有序)先劈一刀，左边排序，右边排序，得到两个排序好的数组，然后再用额外空间装起来
  */
 
 var sortArray = function (nums) {
