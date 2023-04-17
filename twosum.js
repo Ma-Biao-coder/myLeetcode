@@ -10,7 +10,7 @@ function twoSum(nums, target) {
         map.set(nums[i], i)
     }
 }
-
+// with coplilot
 function findIndex(map, complement) {
     if (map.has(complement)) {
         return map.get(complement)
