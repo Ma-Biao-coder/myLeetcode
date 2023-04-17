@@ -6,6 +6,7 @@ function twoSum(nums, target) {
         if (index !== -1) {
             return [index, i]
         }
+
         map.set(nums[i], i)
     }
 }
