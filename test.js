@@ -63,3 +63,30 @@ function arithmeticTriplets(nums, diff) {
     })
     return res
 }
+
+/**
+ * Counts the number of arithmetic triplets in an array that have a common difference of 'diff'
+ * @param {number[]} nums - The array of integers to search for triplets
+ * @param {number} diff - The common difference between the elements in each triplet
+ * @returns {number} The number of arithmetic triplets found in the array
+ */
+function arithmeticTriplets(nums, diff) {
+    /**
+     * Checks if the array contains an element that is 'diff' more than 'num'
+     * @param {number} num - The number to check for
+     * @param {number} diff - The difference between the number to check and the element to search for
+     * @returns {boolean} True if the array contains an element that is 'diff' more than 'num', false otherwise
+     */
+    function hasNextNumber(num, diff) {
+        return nums.includes(num + diff)
+    }
+
+    let res = 0
+    nums.forEach((num) => {
+        if (hasNextNumber(num, diff) && hasNextNumber(num, 2 * diff)) {
+            res++
+        }
+    })
+
+    return res
+}
